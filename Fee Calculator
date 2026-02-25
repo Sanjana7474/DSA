@@ -1,0 +1,35 @@
+def calculate_fee(course,marks):
+    #Calculating the discount
+    
+    course=course.strip().title()
+    if course=="Ai":
+        fee=50000
+    elif course=="Web":
+        fee=40000
+    elif course=="Data Science":
+        fee=45000
+    else:
+        None
+    #Applying Discount
+    if marks>90:
+        print("Discounted applied:5000")
+        fee-=5000
+    return fee
+    
+def main():
+    print("Student fee Calculator")
+    course=input("Enter the course (AI/Web/Data Science:")
+    try:
+        marks=int(input("Enter marks:"))
+        if marks<0 or marks>100:
+            print("Invalid Marks. Please enter from 0 -100.")
+            return
+    except ValueError:
+        print("Invalid Input. Marks must be a number")
+    fee=calculate_fee(course,marks)
+    if fee is None:
+        print("Invalid course selected")
+    else:
+        print("Final Fee:", fee)
+if __name__=="__main__":
+    main()
